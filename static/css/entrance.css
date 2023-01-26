@@ -1,0 +1,63 @@
+body{
+    background-color: black;
+    color: #00ff00;
+    font-family: monospace;
+}
+.entrance{
+    margin-top: 10%;
+}
+.entrance-logo{
+    font-size: 6rem;
+}
+span{
+    position: relative;
+    display: inline-block;
+}
+span.content-shao{
+    animation-name: disappear;
+    animation-duration:2s;
+    /* animation-timing-function:ease-in-out; */
+}
+@keyframes disappear{
+    0%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 100;
+    }
+}
+span.left-braces{
+    animation-name: left-slide;
+    animation-duration:1s;
+    animation-timing-function:ease-in-out;
+}
+@keyframes left-slide {
+    0% {
+        margin-right: -200px;
+    }
+    100% {
+        margin-right: 0px;
+    }
+}
+
+
+.enter-btn{
+    font-size: 2rem;
+    border: #00ff00 2px solid;
+    color: #00ff00;
+}
+.enter-btn:hover{
+    color: #375f37;
+}
+.upside-down-shao{
+    color: #00ff0073;
+}
+
+@media (max-width:520px){
+    .entrance-logo{
+      font-size: 4.2rem;
+    }
+  }
