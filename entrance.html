@@ -16,69 +16,9 @@
 </head>
 <body>
     <div class="container">
-        <div class="entrance text-center col-lg-12">
-            <div class="entrance-logo col-lg-12">
-                <span class="left-braces">{</span>
-                    <span id="S" class="content-shao"></span><span id="H" class="content-shao"></span><span id="A" class="content-shao"></span><span id="O" class="content-shao"></span>
-                <span class="right-braces">}</span>
-            </div>
-            <a href="index.html" class="btn enter-btn mt-4">ENTER -></a>
-            <div class="upside-down-shao mt-4">
-                s&#613;&#592;o
-            </div>
+        <div class="content text-center mt-4 col-lg-12">
+            耶耶大家好
         </div>
-    </div>    
+    </div>
 </body>
-<script>
-    const randomSID = setInterval(randomS,60);
-    setTimeout("stopInterval(randomSID,'S')",3000);
-
-    const randomHID = setInterval(randomH,80);
-    setTimeout("stopInterval(randomHID,'H')",4000);
-
-    const randomAID = setInterval(randomA,100);
-    setTimeout("stopInterval(randomAID,'A')",5000);
-
-    const randomOID = setInterval(randomO,50);
-    setTimeout("stopInterval(randomOID,'O')",6000);
-    
-    function randomS() {
-        length = 1
-        let result = '';
-        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()';
-        const charactersLength = characters.length;
-        result = characters.charAt(Math.floor(Math.random() * charactersLength));
-        document.getElementById('S').innerHTML = result;
-        
-    }
-    function randomH() {
-        length = 1
-        let result = '';
-        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()';
-        const charactersLength = characters.length;
-        result = characters.charAt(Math.floor(Math.random() * charactersLength));
-        document.getElementById('H').innerHTML = result;
-    }
-    function randomA() {
-        length = 1
-        let result = '';
-        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()';
-        const charactersLength = characters.length;
-        result = characters.charAt(Math.floor(Math.random() * charactersLength));
-        document.getElementById('A').innerHTML = result;
-    }
-    function randomO() {
-        length = 1
-        let result = '';
-        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()';
-        const charactersLength = characters.length;
-        result = characters.charAt(Math.floor(Math.random() * charactersLength));
-        document.getElementById('O').innerHTML = result;
-    }
-
-    function stopInterval(id,character) {
-        clearInterval(id);
-        document.getElementById(character).innerHTML = character;
-    }
-</script>
 </html>
