@@ -7,3 +7,19 @@ body{
     color: #00ff00;
     font-family: Cubic, monospace;
 }
+.border-3 {
+    border-width:3px !important;
+}
+.shao-logo{
+    width: 200px;
+}
+.info-2 .badge{
+    color:#fff;
+    /* font-size: 1rem; */
+    padding: 0.5em 0.6em;
+}
+@media (max-width:520px){
+    .shao-logo{
+        width: 120px;
+    }
+}
