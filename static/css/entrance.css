@@ -18,6 +18,10 @@ body{
     /* font-size: 1rem; */
     padding: 0.5em 0.6em;
 }
+.btn-submit{
+    background: aliceblue;
+    color: #43423f;
+}
 @media (max-width:520px){
     .shao-logo{
         width: 120px;
