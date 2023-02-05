@@ -36,28 +36,71 @@
                 <span class="badge rounded-pill bg-success">#seren</span>
             </div>
             <div class="col-12 border-top border-success border-3 leave-message mt-4">
-                <h4 class="text-center my-4">留言給我吧！</h4>
+                <h4 class="text-center my-4">跟我交朋友吧！</h4>
+                
                 <form id="MSG-form" class="px-5" method="POST" action="https://script.google.com/macros/s/AKfycbyA3KuRsnExWKS6aNBfvD6K9EW-EGS1KblrhO-t2kaNiK686WWwaiVSrlHCx13mpV2_/exec">
-                    <div class="form-group mx-3">
-                        <label for="NameOfLeavingMsg">你是誰</label>
-                        <input class="form-control" id="NameOfLeavingMsg" type="text" name="Name" placeholder="名字" required aria-label=".form-control">
+                    <div class="make-friend-YorN">
+                        <div class="form-group make-friend-btn-form-group mx-4 text-center">
+                            <button type="button" class="btn btn-sm btn-yes" onclick="makeFriend('yes')">
+                                Yes
+                            </button>
+                            <button type="button" class="btn btn-sm btn-no" onclick="makeFriend('no')">
+                                No
+                            </button>
+                            <input type="hidden" id="Yes_or_No" name="Yes_or_No" value = "unsure" required>
+                        </div>
                     </div>
-                    <div class="form-group mx-3">
-                        <label for="Msg">你想說什麼ㄋ</label>
+                    <div class="form-group mx-4">
+                        <label for="NameOfLeavingMsg">▼ 暱稱</label>
+                        <input class="form-control" id="NameOfLeavingMsg" type="text" name="Name" placeholder="暱稱" required aria-label=".form-control">
+                    </div>
+                    <div class="form-group mx-4">
+                        <label for="Msg">▼ 留下一句話</label>
                         <input class="form-control" id="Msg" type="textarea" name="Msg" placeholder="留言" required aria-label=".form-control">
                     </div>
-                    <button type="submit" class="btn btn-submit mx-3">送出</button>
+                    <button type="submit" class="btn btn-sm btn-submit mx-4" >送出</button>
                 </form>
             </div>
-            <div class="col-12 text-center mt-4">
+            <div class="col-12 text-center my-4">
                 歡迎一直點進來，我會努力持續優化的！
             </div>
     </div>
 </body>
 <script>
-    document.getElementById("MSG-form").onsubmit = function(event){
-        event.preventDefault();
-        window.location.href = "https://shao112.github.io/shao/entrance.html";
-    };
+    window.addEventListener("load", function() {
+    const form = document.getElementById('MSG-form');
+    form.addEventListener("submit", function(e) {
+        e.preventDefault();
+        const data = new FormData(form);
+        const action = e.target.action;
+        fetch(action, {
+        method: 'POST',
+        body: data,
+        })
+        .then(() => {
+            window.location.href = "https://shao112.github.io/shao/entrance.html";
+        })
+    });
+    });
+    // document.getElementById("MSG-form").onsubmit = function(event){
+    //     event.preventDefault();
+    //     window.location.href = "https://shao112.github.io/shao/entrance.html";
+    // };
+    function makeFriend(ans){
+        if(ans == "yes"){
+            var yesBtn = document.querySelector(".btn-no");
+            yesBtn.setAttribute('disabled','');
+
+            var yes = document.querySelector("#Yes_or_No");
+            yes.value = "yes"
+            alert("謝謝跟我當朋友，不能反悔了ㄡ")
+            console.log("謝謝跟我當朋友，不能反悔了ㄡ")
+        }else if(ans == "no"){
+            var no = document.querySelector("#Yes_or_No");
+            no.value = "no"
+            alert("真的不當朋友嗎")
+            console.log("真的不當朋友嗎")
+        }
+    }
 </script>
 </html>

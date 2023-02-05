@@ -3,7 +3,7 @@
     src: url(../fonts/Cubic_11_1.010_R.woff); 
 }
 body{
-    background-color: black;
+    background-color: #1d1c1c;
     color: #00ff00;
     font-family: Cubic, monospace;
 }
@@ -21,6 +21,18 @@ body{
 .btn-submit{
     background: aliceblue;
     color: #43423f;
+}
+.make-friend-YorN .btn-yes{
+    background: #45ce45;
+    width: 135px;
+    color: #fff;
+    font-weight: bold;
+}
+.make-friend-YorN .btn-no{
+    background: #ff8400;
+    width: 135px;
+    color: #fff;
+    font-weight: bold;
 }
 @media (max-width:520px){
     .shao-logo{
