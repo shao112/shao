@@ -37,19 +37,31 @@
                 <br>我喜歡學習 :)
             </div>
         </div>
-            <div class="col-12 info-2 mt-4">
+        <div class="row info-2 mt-4">
+            <div class="col-12">
+                <span class="badge rounded-pill bg-success">#shao</span>
                 <span class="badge rounded-pill bg-success">#埔心小卲</span>
                 <span class="badge rounded-pill bg-success">#猛線</span>
                 <span class="badge rounded-pill bg-success">#猛猛</span>
                 <span class="badge rounded-pill bg-success">#2811</span>
-                <span class="badge rounded-pill bg-success">#seren</span>
             </div>
+            <div class="col-12 text-center mt-4">
+                桃園。埔心&nbsp;&nbsp;<->&nbsp;&nbsp;雲林。斗六
+            </div>
+        </div>
+        <!-- <div class="row info-3 mt-4">
+            <div class="col-12 border-top border-success border-3">
+                <h4 class="text-center my-4">我現在在做什麼</h4>
+                把google sheet當作資料庫儲存，還有API server讓我讀取檔案
+            </div>
+        </div> -->
+            
             <div class="col-12 border-top border-success border-3 leave-message mt-4">
                 <h4 class="text-center my-4">跟我交朋友吧！</h4>
                 
-                <form id="MSG-form" class="px-5" method="POST" action="https://script.google.com/macros/s/AKfycbyA3KuRsnExWKS6aNBfvD6K9EW-EGS1KblrhO-t2kaNiK686WWwaiVSrlHCx13mpV2_/exec">
+                <form id="MSG-form" class="px-4" method="POST" action="https://script.google.com/macros/s/AKfycbyA3KuRsnExWKS6aNBfvD6K9EW-EGS1KblrhO-t2kaNiK686WWwaiVSrlHCx13mpV2_/exec">
                     <div class="make-friend-YorN">
-                        <div class="form-group make-friend-btn-form-group mx-4 text-center">
+                        <div class="form-group make-friend-btn-form-group mx-2 text-center">
                             <button type="button" class="btn btn-sm btn-yes" onclick="makeFriend('yes')">
                                 Yes
                             </button>
@@ -59,20 +71,39 @@
                             <input type="hidden" id="Yes_or_No" name="Yes_or_No" value = "unsure" required>
                         </div>
                     </div>
-                    <div class="form-group mx-4">
+                    <div class="form-group mx-2">
                         <label for="NameOfLeavingMsg">▼ 暱稱</label>
                         <input class="form-control" id="NameOfLeavingMsg" type="text" name="Name" placeholder="暱稱" required aria-label=".form-control">
                     </div>
-                    <div class="form-group mx-4">
+                    <div class="form-group mx-2">
                         <label for="Msg">▼ 留下一句話</label>
                         <input class="form-control" id="Msg" type="textarea" name="Msg" placeholder="留言" required aria-label=".form-control">
                     </div>
-                    <button type="submit" class="btn btn-sm btn-submit mx-4" >送出</button>
+                    <button type="submit" class="btn btn-sm btn-submit mx-2" >送出</button>
                 </form>
+            </div>
+        <div class="row info-3 mt-4">
+            <div class="col-12 border-top border-success border-3">
+                <h4 class="text-center my-4">目前我有 <span id="Number_Of_Friends">0</span> 位朋友！</h4>
+            </div>
+            <div class="col-12">
+                <table id="MsgTable" class="mx-auto w-100">
+                    <thead>
+                        <tr>
+                            <th>時間</th>
+                            <th>名稱</th>
+                            <th>留言</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
             </div>
             <div class="col-12 text-center my-4">
                 歡迎一直點進來，我會努力持續優化的！
             </div>
+        </div>
+            
     </div>
 </body>
 <script>
@@ -103,13 +134,47 @@
             var yes = document.querySelector("#Yes_or_No");
             yes.value = "yes"
             alert("謝謝跟我當朋友，不能反悔了ㄡ")
-            console.log("謝謝跟我當朋友，不能反悔了ㄡ")
         }else if(ans == "no"){
             var no = document.querySelector("#Yes_or_No");
             no.value = "no"
             alert("真的不當朋友嗎")
-            console.log("真的不當朋友嗎")
         }
     }
+
+    const sheetId = '1QKdxwpTEGi_wa5B96G9GmTolHg8nPppbBzkPRImLDRo';
+    const range = 'Shao留言板!A2:$C';
+    const apiKey = 'AIzaSyBIdagodBjndLFGnQ2NvcH_ZT6-NW90Gvw';
+
+    const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`;
+
+    fetch(url)
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("Number_Of_Friends").innerHTML = data.values.length
+        var tableBody = document.getElementById("MsgTable").getElementsByTagName("tbody")[0];
+
+        for (var i = 0; i < data.values.length; i++) {
+            var row = document.createElement("tr");
+            var cell1 = document.createElement("td");
+            cell1.innerHTML = data.values[i][0];
+            row.appendChild(cell1);
+
+            var cell2 = document.createElement("td");
+            cell2.innerHTML = data.values[i][1];
+            row.appendChild(cell2);
+
+            var cell3 = document.createElement("td");
+            cell3.innerHTML = data.values[i][2];
+            row.appendChild(cell3);
+
+            tableBody.appendChild(row);
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    });
+
+
+
 </script>
 </html>
