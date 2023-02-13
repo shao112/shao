@@ -28,7 +28,7 @@
 <body>
     <div class="container">
         <div class="col-12 info-title border-bottom border-success border-3 text-center mt-4">
-            <h1>$haoø is fierce.</h1>
+            <h1>$haø is fierce.</h1>
         </div>
         <div class="row info-1 mt-4">
             <div class="col-6">
@@ -36,7 +36,7 @@
             </div>
             <div class="col-6">
                 嗨&nbsp;我是卲如&nbsp;
-                <br>我喜歡學習 :)
+                <br> :)
             </div>
         </div>
         <div class="row info-2 mt-4">
@@ -50,22 +50,44 @@
                 桃園。埔心&nbsp;&nbsp;<->&nbsp;&nbsp;雲林。斗六
             </div>
         </div>
-        <!-- <div class="row info-3 mt-4">
+        <div class="row info-3 mt-4">
+            <div class="col-12 border-top border-success border-3">
+                <h4 class="text-center my-4">網站架構</h4>
+                <div class="row text-center">
+                    <div class="col-6">
+                        Google Sheet
+                    </div>
+                    <div class="col-6">
+                        網頁
+                    </div>
+                    <div class="col-6">
+                        github page
+                    </div>
+                    <div class="col-6">
+                        Google Cloud Platform
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    以 google sheet 作為資料庫，讀取資料的部分，要透過 Google Cloud Platform 提供的 API 去串接。
+                </div>
+            </div>
+            <div class="col-6 mx-auto">
+                <img id="MembersImgFormAPI" class="img-fluid mx-auto" src="" alt="">
+            </div>
+        </div>
+        <div class="row info-3 mt-4">
             <div class="col-12 border-top border-success border-3 mb-5">
                 <h4 class="text-center mt-4">系排已死 有事燒紙</h4>
-                <div class="text-center">資管系排已經要倒，都是這些人在搞</div>
+                <div class="text-center">資管系排已經要倒了，都是這些人在搞</div>
             </div>
             <div class="col-12">
                 <div id="Members" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner mx-auto w-75">
+                    <div id="MembersImg" class="carousel-inner mx-auto w-75">
                       <div class="carousel-item active">
                         <img src="static/img/shao-logo.jpg" class="d-block w-50 mx-auto" alt="...">
-                      </div>
-                      <div class="carousel-item">
-                        <img src="static/img/shao-logo.jpg" class="d-block w-50 mx-auto" alt="...">
-                      </div>
-                      <div class="carousel-item">
-                        <img src="static/img/shao-logo.jpg" class="d-block w-50 mx-auto" alt="...">
+                        <div class="member-title text-center mx-auto w-75 mt-3">
+                            :)
+                        </div>
                       </div>
                     </div>
                     <a class="carousel-control-prev ml-4" href="#Members" data-slide="prev">
@@ -74,15 +96,10 @@
                     <a class="carousel-control-next mr-4" href="#Members" data-slide="next">
                         <span class="carousel-control-next-icon"></span>
                     </a>
-                  </div>
+                </div>
+                
             </div>
-        </div> -->
-        <!-- <div class="row info-3 mt-4">
-            <div class="col-12 border-top border-success border-3">
-                <h4 class="text-center my-4">我現在在做什麼</h4>
-                把google sheet當作資料庫儲存，還有API server讓我讀取檔案
-            </div>
-        </div> -->
+        </div>
             
             <div class="col-12 border-top border-success border-3 leave-message mt-4">
                 <h4 class="text-center my-4">跟我交朋友吧</h4>
@@ -100,12 +117,12 @@
                         </div>
                     </div>
                     <div class="form-group mx-2">
-                        <label for="NameOfLeavingMsg">▼ 暱稱</label>
-                        <input class="form-control" id="NameOfLeavingMsg" type="text" name="Name" placeholder="暱稱" required aria-label=".form-control">
+                        <label for="NameOfLeavingMsg">▼ 暱稱 (15)</label>
+                        <input class="form-control" id="NameOfLeavingMsg" maxlength="15" type="text" name="Name" placeholder="暱稱" required aria-label=".form-control">
                     </div>
                     <div class="form-group mx-2">
-                        <label for="Msg">▼ 留下一句話</label>
-                        <input class="form-control" id="Msg" type="textarea" name="Msg" placeholder="留言" required aria-label=".form-control">
+                        <label for="Msg">▼ 留下一句話(20)</label>
+                        <input class="form-control" id="Msg" maxlength="20" type="text" name="Msg" placeholder="留言" required aria-label=".form-control">
                     </div>
                     <button type="submit" class="btn btn-sm btn-submit mx-2" >送出</button>
                 </form>
@@ -115,6 +132,12 @@
                 <h4 class="text-center my-4">目前我有 <span id="Number_Of_Friends">0</span> 位朋友</h4>
             </div>
             <div class="col-10 mx-auto">
+                <div>
+                    XXX 說
+                </div>
+                <div>
+                    123456
+                </div>
                 <table id="MsgTable" class="friends-table mx-auto w-100 pl-2 py-1">
                     <thead>
                         <tr>
@@ -134,27 +157,35 @@
             
     </div>
 </body>
+<script src="static/js/MsgGoogleSheetAPI.js" crossorigin="anonymous"></script>
+<script src="static/js/MembersGoogleSheetAPI.js" crossorigin="anonymous"></script>
+
 <script>
+    var ans = "unsure";
     window.addEventListener("load", function() {
     const form = document.getElementById('MSG-form');
     form.addEventListener("submit", function(e) {
-        e.preventDefault();
-        const data = new FormData(form);
-        const action = e.target.action;
-        fetch(action, {
-        method: 'POST',
-        body: data,
-        })
-        .then(() => {
-            window.location.href = "https://shao112.github.io/shao/entrance.html";
-        })
+        if(ans == "yes"){
+            e.preventDefault();
+            const data = new FormData(form);
+            const action = e.target.action;
+            fetch(action, {
+            method: 'POST',
+            body: data,
+            })
+            .then(() => {
+                window.location.href = "https://shao112.github.io/shao/entrance.html";
+            })
+        }else{
+            e.preventDefault();
+            alert("不交朋友就不要送出欸(怒)");
+        }
+        
     });
     });
-    // document.getElementById("MSG-form").onsubmit = function(event){
-    //     event.preventDefault();
-    //     window.location.href = "https://shao112.github.io/shao/entrance.html";
-    // };
-    function makeFriend(ans){
+    
+    function makeFriend(a){
+        this.ans = a;
         if(ans == "yes"){
             var yesBtn = document.querySelector(".btn-no");
             yesBtn.setAttribute('disabled','');
@@ -169,38 +200,6 @@
         }
     }
 
-    const sheetId = '1QKdxwpTEGi_wa5B96G9GmTolHg8nPppbBzkPRImLDRo';
-    const range = 'Shao留言板!A2:$C';
-    const apiKey = 'AIzaSyBIdagodBjndLFGnQ2NvcH_ZT6-NW90Gvw';
-
-    const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`;
-
-    fetch(url)
-    .then(response => response.json())
-    .then(data => {
-        document.getElementById("Number_Of_Friends").innerHTML = data.values.length
-        var tableBody = document.getElementById("MsgTable").getElementsByTagName("tbody")[0];
-
-        for (var i = 0; i < data.values.length; i++) {
-            var row = document.createElement("tr");
-            var cell1 = document.createElement("td");
-            cell1.innerHTML = data.values[i][0];
-            row.appendChild(cell1);
-
-            var cell2 = document.createElement("td");
-            cell2.innerHTML = data.values[i][1];
-            row.appendChild(cell2);
-
-            var cell3 = document.createElement("td");
-            cell3.innerHTML = data.values[i][2];
-            row.appendChild(cell3);
-
-            tableBody.appendChild(row);
-        }
-    })
-    .catch(error => {
-        console.error('Error fetching data:', error);
-    });
 
 
 

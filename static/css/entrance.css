@@ -27,6 +27,7 @@ body{
     width: 135px;
     color: #fff;
     font-weight: bold;
+    box-shadow: inset -3px -3px 10px #088f15;
     /* box-shadow: 0px -5px 10px 0px #4f5b4f; */
     /* box-shadow: 0 -3px 2px 3px #4f5b4f; */
 }
@@ -35,6 +36,7 @@ body{
     width: 135px;
     color: #fff;
     font-weight: bold;
+    box-shadow: inset -3px -3px 10px #8f5b08;
 }
 .circle{
     width: 50px;
@@ -49,7 +51,7 @@ body{
     
 }
 .friends-table{
-    
+    font-size: .8rem;
     background: #4f5b4f;
     /* border: 2px solid white; */
     border-radius: 10px;
@@ -57,7 +59,13 @@ body{
     /* table-layout: fixed; */
 }
 .friends-table td{
-    /* word-wrap: break-all; */
+    word-wrap: break-all;
+}
+.member-title{
+    /* width: fit-content; */
+    color: #fff;
+    background: #004085;
+    font-size: 1.5rem;
 }
 @media (max-width:520px){
     .shao-logo{
