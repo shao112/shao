@@ -21,7 +21,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>$haoø</title>
+    <title>$haø</title>
     <!-- Bootstrap CSS 4.2.1 -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <!-- Bootstrap JS -->
@@ -62,28 +62,21 @@
             <div class="col-12 border-top border-success border-3">
                 <h4 class="text-center my-4">網站架構</h4>
                 <div class="row text-center">
-                    <div class="col-6">
-                        Google Sheet
-                    </div>
-                    <div class="col-6">
-                        網頁
-                    </div>
-                    <div class="col-6">
-                        github page
-                    </div>
-                    <div class="col-6">
-                        Google Cloud Platform
+                    <div class="col-12">
+                        Google Sheet + 網頁 + Github Page + Google Cloud Platform
                     </div>
                 </div>
                 <div class="row mt-2">
-                    以 google sheet 作為資料庫，讀取資料的部分，要透過 Google Cloud Platform 提供的 API 去串接。
+                    <div class="col-12">
+                        &nbsp;&nbsp;將網頁放在 Github Page，以 Google Sheet 作為資料庫，讀取資料的部分，要透過 Google Cloud Platform 提供的 API 去串接。
+                    </div>
                 </div>
             </div>
             <div class="col-6 mx-auto">
                 <img id="MembersImgFormAPI" class="img-fluid mx-auto" src="" alt="">
             </div>
         </div>
-        <div class="row info-3 mt-4">
+        <div class="row info-4 mt-4">
             <div class="col-12 border-top border-success border-3 mb-5">
                 <h4 class="text-center mt-4">系排已死 有事燒紙</h4>
                 <div class="text-center">資管系排已經要倒了，都是這些人在搞</div>
@@ -94,7 +87,7 @@
                       <div class="carousel-item active">
                         <img src="static/img/shao-logo.jpg" class="d-block w-50 mx-auto" alt="...">
                         <div class="member-title text-center mx-auto w-75 mt-3">
-                            :)
+                            我
                         </div>
                       </div>
                     </div>
@@ -110,11 +103,10 @@
         </div>
             
             <div class="col-12 border-top border-success border-3 leave-message mt-4">
-                <h4 class="text-center my-4">跟我交朋友吧</h4>
+                <h4 class="text-center  mt-4 mb-3">跟我交朋友吧</h4>
                 
-                <form id="MSG-form" class="px-2" method="POST" action="https://script.google.com/macros/s/AKfycbyA3KuRsnExWKS6aNBfvD6K9EW-EGS1KblrhO-t2kaNiK686WWwaiVSrlHCx13mpV2_/exec">
-                    <div class="make-friend-YorN">
-                        <div class="form-group make-friend-btn-form-group mx-2 text-center">
+                <form id="MSG-form" class="px-2" style="display: inline-block;" method="POST" action="https://script.google.com/macros/s/AKfycbyA3KuRsnExWKS6aNBfvD6K9EW-EGS1KblrhO-t2kaNiK686WWwaiVSrlHCx13mpV2_/exec">
+                    <div class="make-friend-YorN form-group mx-2 mb-4 text-center">
                             <button type="button" class="btn btn-sm btn-yes" onclick="makeFriend('yes')">
                                 Yes
                             </button>
@@ -122,7 +114,6 @@
                                 No
                             </button>
                             <input type="hidden" id="Yes_or_No" name="Yes_or_No" value = "unsure" required>
-                        </div>
                     </div>
                     <div class="form-group mx-2">
                         <label for="NameOfLeavingMsg">▼ 暱稱 (15)</label>
@@ -132,7 +123,7 @@
                         <label for="Msg">▼ 留下一句話(20)</label>
                         <input class="form-control" id="Msg" maxlength="20" type="text" name="Msg" placeholder="留言" required aria-label=".form-control">
                     </div>
-                    <button type="submit" class="btn btn-sm btn-submit mx-2" >送出</button>
+                    <button type="submit" class="btn btn-sm btn-submit mx-2 w-25 float-right">送出</button>
                 </form>
             </div>
         <div class="row info-3 mt-4">

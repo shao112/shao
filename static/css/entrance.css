@@ -18,38 +18,30 @@ body{
     /* font-size: 1rem; */
     padding: 0.5em 0.6em;
 }
+
+/* 跟我交朋友吧 */
 .btn-submit{
-    background: aliceblue;
-    color: #43423f;
+    color: #00ff00;
+    border: 1px solid #00ff00;
 }
 .make-friend-YorN .btn-yes{
-    background: #45ce45;
-    width: 135px;
-    color: #fff;
+    /* b0ff00 16afc8 */
+    border: 3px solid #64c905;
+    /* 1c464d 0b373f 214730 11321e*/
+    background: #11321e;
+    width: 130px;
+    color: #64c905;
     font-weight: bold;
-    box-shadow: inset -3px -3px 10px #088f15;
-    /* box-shadow: 0px -5px 10px 0px #4f5b4f; */
-    /* box-shadow: 0 -3px 2px 3px #4f5b4f; */
 }
 .make-friend-YorN .btn-no{
-    background: #ff8400;
-    width: 135px;
-    color: #fff;
+    border: 3px solid #f00;
+    /* 6a1414 481515 */
+    background: #481515;
+    width: 130px;
+    color: #f00;
     font-weight: bold;
-    box-shadow: inset -3px -3px 10px #8f5b08;
 }
-.circle{
-    width: 50px;
-    height: 50px;
-    border: 3px solid #00ff00;
-    border-radius: 50%;
-    background: 
-        linear-gradient(#efce28, transparent),
-        linear-gradient(to top left, rgb(255, 255, 255), transparent),
-        linear-gradient(to top right, #1554f4a3, transparent);
-    background-blend-mode: screen;
-    
-}
+/* 目前我有X位朋友 */
 .friends-table{
     font-size: .8rem;
     background: #4f5b4f;
