@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lol 英雄聯盟</title>
+    <!-- Bootstrap CSS 4.2.1 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Bootstrap JS and jquery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <!-- My CSS -->
+    <link rel="stylesheet" href="static/css/lolprofile.css">
+</head>
+<body>
+    <div class="container">
+        <div class="col-12 lol-profile-title border-bottom border-success border-3 text-center mt-4">
+            <h1>Pro for ARAM</h1>
+        </div>
+        <div class="col-12 mt-4">
+            <div class="row">
+                <div class="col-6">
+                    <div class="lol-profile-icon mx-auto">
+                        <img id="lol-profile-icon" class="img-fluid" src="" alt="" style="width: 100px;">
+                    </div>
+                    
+                </div>
+                <div class="col-6">
+                    <h4 id="name" class="name">
+        
+                    </h4>
+                    <h4 id="summonerLevel" class="summonerLevel">
+            
+                    </h4>
+                </div>
+            </div>
+            
+            
+        </div>
+        <div class="col-12 mt-4">
+            <div class="row">
+                <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Fizz_10.jpg" class="img-fluid" alt="" style="opacity: .5;">
+                <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Viktor_4.jpg" class="img-fluid" alt="" style="opacity: .5;">
+                <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Teemo_8.jpg" class="img-fluid" alt="" style="opacity: .5;">
+
+            </div>
+        </div>
+    </div>
+    
+</body>
+<script>
+    // 得到圖片的版本號 version => https://ddragon.leagueoflegends.com/api/versions.json
+    var profileIconId = "";
+    var summonerLevel = ""
+    var name = ""
+
+    const API = "RGAPI-277ab76a-9c62-49b0-9168-b74bad47ce30";
+    const USERNAME = "郭俊yo還錢";
+    const Profile_URL = "https://tw2.api.riotgames.com/lol/summoner/v4/summoners/by-name/" + USERNAME + "?api_key=" + API
+    fetch(Profile_URL)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        profileIconId = data.profileIconId;
+        summonerLevel = data.summonerLevel;
+        name = data.name;
+        
+        setProfile(profileIconId, summonerLevel, name)
+        
+    })
+    .catch(error => console.error(error));
+
+    function setProfile(profileIconId, summonerLevel, name){
+        var Profile_Icons_URL = "https://ddragon.leagueoflegends.com/cdn/13.4.1/img/profileicon/" + profileIconId + ".png";
+        document.getElementById('lol-profile-icon').src = Profile_Icons_URL;
+        document.getElementById('name').innerHTML = name;
+        document.getElementById('summonerLevel').innerHTML = "lv: " + summonerLevel;
+    }
+    
+    fetch("https://ddragon.leagueoflegends.com/cdn/13.4.1/data/zh_TW/champion/Teemo.json")
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.data.Teemo.title);
+        
+        setProfile(profileIconId, summonerLevel, name)
+        
+    })
+    .catch(error => console.error(error));
+
+</script>
+</html>
