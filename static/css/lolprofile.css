@@ -7,6 +7,9 @@ body{
     color: #00ff00;
     font-family: Cubic, monospace;
 }
+.border-3 {
+    border-width:3px !important;
+}
 .lol-profile-icon{
     width: fit-content;
 }

@@ -25,37 +25,33 @@
                     <div class="lol-profile-icon mx-auto">
                         <img id="lol-profile-icon" class="img-fluid" src="" alt="" style="width: 80px;">
                     </div>
-                    
                 </div>
                 <div class="col-6">
-                    <h4 id="name" class="name"></h4>
-                    <h4 id="summonerLevel" class="summonerLevel"></h4>
+                    <h5 id="lol-profile-name" class="lol-profile-name"></h5>
+                    <h5 id="summonerLevel" class="summonerLevel"></h5>
                 </div>
             </div>
-            <div class="row mt-2">
+            <div class="row mt-4">
                 <div class="col-12">
                     <blockquote class="text-right">
                         <p class="font-italic h6">- 修身養性，只玩咆嘯深淵</p>
                     </blockquote>
                 </div>
-
-                
-                
             </div>
         </div>
-        <div class="col-12 lol-profile-subtitle border-top border-success border-3 text-center mt-4">
-            <h4>Main Champion</h4>
+        <div class="col-12 lol-profile-subtitle border-top border-success border-3 text-center">
+            <h4 class=" mt-4">精通各種角色</h4>
         </div>
         <div class="col-12 mt-4">
             <div class="row">
                 <div class="fizz">
                     <div class="fizz-img">
-                        <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Fizz_10.jpg" class="img-fluid" alt="" style="opacity: .5;">
+                        <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Fizz_10.jpg" class="img-fluid" loading="lazy"  alt="" style="opacity: .5;">
                     </div>
-                    <div class="fizz-description">
-                        飛斯是我在 lol 玩的第一隻的英雄，整個埔心，把飛斯玩得最像西門的人，就是我了，頂級魚人一枚。
+                    <div class="fizz-description mt-3 px-2 ">
+                        &nbsp;&nbsp;&nbsp;&nbsp;飛斯是我在 lol 玩的第一隻的英雄，整個埔心，把飛斯玩得最像西門的人，就是我了，頂級魚人一枚。
                     </div>
-                    <div class="fizz-ARAM-item mt-4">
+                    <div class="fizz-item mt-4">
                         <table class="table table-bordered">
                             <tbody>
                             <tr>
@@ -71,25 +67,32 @@
                             </tbody>
                         </table>
                     </div>
-                    
-                      
+                </div>
+                <div class="teemo">
+                    <div class="teemo-img">
+                        <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Teemo_8.jpg" class="img-fluid" loading="lazy" alt="" style="opacity: .5;">
+                    </div>
+                    <div class="teemo-description mt-3 px-4 ">
+                        &nbsp;&nbsp;&nbsp;&nbsp;咆嘯深淵偵查兵，對於蘑菇該種在哪個點位，我可以說是滿級理解，職業菇農。
+                    </div>
 
                 </div>
                 <div class="viktor">
                     <div class="viktor-img">
-                        <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Viktor_4.jpg" class="img-fluid" alt="" style="opacity: .5;">
+                        <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Viktor_4.jpg" class="img-fluid" loading="lazy" alt="" style="opacity: .5;">
                     </div>
-                    <div class="viktor-description">
-                        機械使徒，真嗣好玩。
+                    <div class="viktor-description mt-3 px-4 ">
+                        &nbsp;&nbsp;&nbsp;&nbsp;機械使徒，真嗣好玩。
                     </div>
 
                 </div>
-                <div class="teemo">
-                    <div class="teemo-img">
-                        <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Teemo_8.jpg" class="img-fluid" alt="" style="opacity: .5;">
+                <div class="zed">
+                    <div class="zed-img">
+                        <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Zed_31.jpg" class="img-fluid" loading="lazy" alt="" style="opacity: .5;">
                     </div>
-                    <div class="teemo-description">
-                        我最喜歡玩提摩了！在咆嘯深淵裡，對於蘑菇該種在哪個點位，可以說是滿級理解，職業菇農。
+                    <div class="zed-description text-center mt-3 px-2 ">
+                        Z for Zenith; E for Eclipse; D for Death<br>
+                        我的勝利行動代號：ZED
                     </div>
 
                 </div>
@@ -115,25 +118,21 @@
         profileIconId = data.profileIconId;
         summonerLevel = data.summonerLevel;
         name = data.name;
-        
         setProfile(profileIconId, summonerLevel, name)
-        
     })
     .catch(error => console.error(error));
 
     function setProfile(profileIconId, summonerLevel, name){
         var Profile_Icons_URL = "https://ddragon.leagueoflegends.com/cdn/13.4.1/img/profileicon/" + profileIconId + ".png";
         document.getElementById('lol-profile-icon').src = Profile_Icons_URL;
-        document.getElementById('name').innerHTML = name;
+        document.getElementById('lol-profile-name').innerHTML = name;
         document.getElementById('summonerLevel').innerHTML = "lv: " + summonerLevel;
     }
     
     fetch("https://ddragon.leagueoflegends.com/cdn/13.4.1/data/zh_TW/champion/Teemo.json")
     .then(response => response.json())
     .then(data => {
-        console.log(data.data.Teemo.title);
-        
-        setProfile(profileIconId, summonerLevel, name)
+        console.log(data.data.Teemo.skins[8].name);
         
     })
     .catch(error => console.error(error));
