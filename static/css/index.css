@@ -4,7 +4,7 @@ body{
     font-family: monospace;
 }
 .entrance{
-    margin-top: 10%;
+    margin-top: 4%;
 }
 .entrance-logo{
     font-size: 6rem;
@@ -55,9 +55,11 @@ span.left-braces{
 .upside-down-shao{
     color: #00ff0073;
 }
-
 @media (max-width:520px){
     .entrance-logo{
       font-size: 3.8rem;
+    }
+    .entrance{
+        margin-top: 10%;
     }
 }
