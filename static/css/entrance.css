@@ -43,9 +43,9 @@ body{
 }
 /* 目前我有X位朋友 */
 .friends-table{
-    font-size: .8rem;
+    font-size: 1.1rem;
     background: #4f5b4f;
-    /* border: 2px solid white; */
+    border-spacing: 3px 12px;
     border-radius: 10px;
     border-collapse: separate;
     /* table-layout: fixed; */
@@ -87,5 +87,8 @@ body{
 @media (max-width:520px){
     .shao-logo{
         width: 120px;
+    }
+    .friends-table{
+        font-size: .8rem;
     }
 }
